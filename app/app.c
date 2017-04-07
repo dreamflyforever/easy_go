@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <syslog.h>
 
 int main()
 {

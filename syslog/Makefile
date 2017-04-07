@@ -1,11 +1,11 @@
 INC = inc
 GCC = gcc
 AR = ar
-CFLAG = -I$(INC) -I../syslog
-LDFLAG = -lm  -L.. -lsyslog
-SRC = app.c
+CFLAG = -I$(INC) -I.
+LDFLAG = -lm 
+SRC = syslog.c
 OUTPUT = build
-TARGET_LIB = libapp
+TARGET_LIB = libsyslog
 
 C_OBJS = $(SRC:%.c=%.o)
 
