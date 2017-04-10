@@ -6,7 +6,7 @@ LDFLAG = -lm  -Lsyslog/build -lsyslog
 TARGET = fos
 MAKEINCLUDE= app/Makefile syslog/Makefile
 
-OBJS = app/build/app.o syslog/build/syslog.o
+OBJS = app/app.o syslog/syslog.o
 
 
 .PHONY: $(TARGET)
@@ -19,4 +19,5 @@ all:$(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAG) $+ $(LDFLAG) -o $@
 
-export
+clean:
+	-rm $(OBJS) $(TARGET)
