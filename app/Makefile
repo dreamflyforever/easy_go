@@ -1,14 +1,11 @@
-INC = inc
-CFLAG = -I$(INC) -I../syslog
-DIR = $(PWD)/app
-LDFLAG = -lm  -L.. -lsyslog
-SRC = $(DIR)/app.c
-OUTPUT = build
-TARGET_LIB = libapp
+# subdir and objects in current dir
+SUBDIRS	= lib
+OBJECTS	= app.o
 
-C_OBJS = $(SRC:%.c=%.o)
 
-.PHONY: $(TARGET_LIB).a
+all:subdirs ${OBJECTS}
 
-$(TARGET_LIB).a: $(C_OBJS)
-	@$(AR) r $@ $+
+clean:cleansubdirs
+	rm -f ${OBJECTS}
+	
+include ${MK_CF}

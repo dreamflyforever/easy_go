@@ -1,11 +1,9 @@
 # subdir and objects in current dir
 SUBDIRS	= 
-OBJECTS	= syslog.o
+OBJECTS	= app.o
 
 
 all:subdirs ${OBJECTS}
-	ar r libsyslog.a $(OBJECTS)
-#	ar r $@ $+
 
 clean:cleansubdirs
 	rm -f ${OBJECTS}

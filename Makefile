@@ -1,23 +1,15 @@
-INC = inc
-CC = gcc
-AR = ar
-CFLAG = -I$(INC) -Isyslog
-LDFLAG = -lm  -Lsyslog/build -lsyslog
 TARGET = fos
-MAKEINCLUDE= app/Makefile syslog/Makefile
 
-OBJS = app/app.o syslog/syslog.o
+SUBDIRS	= app syslog
+OBJECTS	= 
 
+all:subdirs ${OBJECTS}
+	${CC} -o ${TARGET} $$(find ./${SUBDIRS} -name '*.o') ${LDFLAGS} ${INCLUDES}
 
-.PHONY: $(TARGET)
+clean:cleansubdirs
+	rm -f ${TARGET} ${OBJECTS}
 
-include ${MAKEINCLUDE}
-all:$(TARGET)
-	@echo Build $< Done
-	@echo $(OBJS)
+export PRO_PATH = $(PWD)
+export MK_CF = $(PRO_PATH)/mk.cf
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAG) $+ $(LDFLAG) -o $@
-
-clean:
-	-rm $(OBJS) $(TARGET)
+include $(MK_CF)
